@@ -1,37 +1,3 @@
 {
-  "questions": [
-    {
-      "id": 4,
-      "prompt": "______ is a tool that transpiles JSX into valid JavaScript.",
-      "answers": [
-        "React",
-        "Babel",
-        "Webpack",
-        "ES6"
-      ],
-      "correctIndex": 1
-    },
-    {
-      "id": 5,
-      "prompt": "What syntax makes it possible to unpack values from arrays, or properties from objects, into distinct variables?",
-      "answers": [
-        "spread",
-        "key-value",
-        "coalescing",
-        "destructuring"
-      ],
-      "correctIndex": 3
-    },
-    {
-      "id": 6,
-      "prompt": "Returning different elements from a component depending on the state of your application is known as _____ rendering.",
-      "answers": [
-        "voodoo",
-        "conditional",
-        "reactive",
-        "controlled"
-      ],
-      "correctIndex": 1
-    }
-  ]
+  "questions": []
 }

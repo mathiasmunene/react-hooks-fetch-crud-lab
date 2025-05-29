@@ -1,9 +1,7 @@
 import React from "react";
 import QuestionItem from "./QuestionItem";
 
-function QuestionList({ questions = [], onDeleteQuestion, onUpdateQuestion }) {
-  console.log("Questions in QuestionList:", questions);
-
+function QuestionList({ questions, onDelete, onUpdate }) {
   return (
     <section>
       <h1>Quiz Questions</h1>
@@ -12,8 +10,8 @@ function QuestionList({ questions = [], onDeleteQuestion, onUpdateQuestion }) {
           <QuestionItem
             key={question.id}
             question={question}
-            onDeleteQuestion={onDeleteQuestion}
-            onUpdateQuestion={onUpdateQuestion}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
           />
         ))}
       </ul>
@@ -22,3 +20,5 @@ function QuestionList({ questions = [], onDeleteQuestion, onUpdateQuestion }) {
 }
 
 export default QuestionList;
+
+// This component renders a list of questions, each represented by a QuestionItem.

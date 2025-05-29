@@ -7,42 +7,24 @@ function App() {
   const [page, setPage] = useState("List");
   const [questions, setQuestions] = useState([]);
 
-  const fetchQuestions = () => {
-    fetch("http://localhost:4000/questions")
-      .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch questions");
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Fetched questions:", data);
-        setQuestions(data);
-      })
-      .catch((error) => console.error("Fetch error:", error));
-  };
-
   useEffect(() => {
-    fetchQuestions();
+    fetch("http://localhost:4000/questions")
+      .then((r) => r.json())
+      .then((data) => setQuestions(data));
   }, []);
 
   function handleAddQuestion(newQuestion) {
-    setQuestions((prevQuestions) => [...prevQuestions, newQuestion]);
+    setQuestions([...questions, newQuestion]);
   }
 
   function handleDeleteQuestion(id) {
-    setQuestions((prevQuestions) =>
-      prevQuestions.filter((question) => question.id !== id)
-    );
+    setQuestions(questions.filter((q) => q.id !== id));
   }
 
   function handleUpdateQuestion(updatedQuestion) {
-    console.log("Updating question in state:", updatedQuestion);
-    setQuestions((prevQuestions) =>
-      prevQuestions.map((question) =>
-        question.id === updatedQuestion.id ? updatedQuestion : question
-      )
-    );
-    // Re-fetch to ensure server state is reflected
-    fetchQuestions();
+    setQuestions(questions.map((q) =>
+      q.id === updatedQuestion.id ? updatedQuestion : q
+    ));
   }
 
   return (
@@ -53,8 +35,8 @@ function App() {
       ) : (
         <QuestionList
           questions={questions}
-          onDeleteQuestion={handleDeleteQuestion}
-          onUpdateQuestion={handleUpdateQuestion}
+          onDelete={handleDeleteQuestion}
+          onUpdate={handleUpdateQuestion}
         />
       )}
     </main>
